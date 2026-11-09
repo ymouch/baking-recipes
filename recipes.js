@@ -31,4 +31,26 @@ const RECIPES = [
     ],
     note: "原配方一條，模具是 Vermicular 琺瑯鑄鐵方型深烤模（17×13.6×13 公分，帶蓋）。換成其他吐司模時，烘烤時間增加 3～5 分鐘，確保中心熟透。食譜來源：ciao.kitchen",
   },
+  {
+    id: "earl-grey-condensed-milk",
+    name: "伯爵煉乳麵包",
+    category: "麵包",
+    tags: ["伯爵茶"],
+    photo: "",
+    ingredients: [
+      { name: "高筋麵粉", g: 255, flour: true },
+      { name: "低筋麵粉", g: 45, flour: true },
+      { name: "伯爵茶包", g: 3, unit: "包" },
+      { name: "糖", g: 30 },
+      { name: "煉乳", g: 30 },
+      { name: "牛奶", g: 210 },
+      { name: "鹽", g: 3 },
+      { name: "奶油", g: 35 },
+      { name: "速發酵母", g: 3 },
+    ],
+    steps: [
+      "原始資料沒有詳細步驟，只寫用直接法或低溫冷藏發酵。",
+    ],
+    note: "原始資料沒有寫單位，這裡推定為克，牛奶也可能是毫升。原提供者註明速發酵母 3 克的部分她改用新鮮酵母，但沒有寫用量。",
+  },
 ];
