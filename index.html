@@ -59,7 +59,7 @@ function renderList() {
     <div class="chips">${tags.map(t => `<button class="chip ${t === filter.tag ? "on" : ""}" data-tag="${esc(t)}">${esc(t)}</button>`).join("")}</div>
     <div class="grid">${shown.map(r => `<a class="card" href="#${esc(r.id)}">
       ${r.photo ? `<img src="${esc(r.photo)}" alt="${esc(r.name)}" loading="lazy">` : ""}
-      <div><b>${esc(r.name)}</b><span class="soft">${esc(r.category)}</span></div></a>`).join("") || `<p class="soft">這個分類還沒有食譜。</p>`}</div>`;
+      <div><b>${esc(r.name)}</b><span class="soft">${esc(r.category)}・收集 ${esc(r.collected.replaceAll("-", "/"))}</span></div></a>`).join("") || `<p class="soft">這個分類還沒有食譜。</p>`}</div>`;
   app.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => { filter.cat = b.dataset.cat; renderList(); });
   app.querySelectorAll("[data-tag]").forEach(b => b.onclick = () => { filter.tag = filter.tag === b.dataset.tag ? "" : b.dataset.tag; renderList(); });
 }
@@ -69,7 +69,7 @@ function renderRecipe(r) {
   const pct = i => flour && ["克", "毫升"].includes(unitOf(i)) ? fmt(i.g / flour * 100) + "%" : "";
   app.innerHTML = `<a href="#">← 所有食譜</a>
     <h1 style="margin-top:8px">${esc(r.name)}</h1>
-    <div class="soft">${[r.category, ...(r.tags || [])].map(esc).join("・")}</div>
+    <div class="soft">${[r.category, ...(r.tags || [])].map(esc).join("・")}｜收集日期 ${esc(r.collected.replaceAll("-", "/"))}</div>
     ${r.photo ? `<img class="hero" src="${esc(r.photo)}" alt="${esc(r.name)}">` : ""}
     ${r.mold ? `<h2>模具</h2><div class="box mold">
       <select id="shape"><option value="round">圓形</option><option value="square">方形</option></select>
