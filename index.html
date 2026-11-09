@@ -40,7 +40,7 @@
 </head>
 <body>
 <main id="app"></main>
-<script src="recipes.js"></script>
+<script>document.write('<script src="recipes.js?t=' + Date.now() + '"><\/script>');</script>
 <script>
 const app = document.getElementById("app");
 const esc = s => String(s).replace(/[&<>"']/g, c => `&#${c.charCodeAt(0)};`);
