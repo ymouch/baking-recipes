@@ -66,7 +66,7 @@ function renderList() {
 
 function renderRecipe(r) {
   const flour = r.ingredients.filter(i => i.flour).reduce((sum, i) => sum + i.g, 0);
-  const pct = i => flour && unitOf(i) === "克" ? fmt(i.g / flour * 100) + "%" : "";
+  const pct = i => flour && ["克", "毫升"].includes(unitOf(i)) ? fmt(i.g / flour * 100) + "%" : "";
   app.innerHTML = `<a href="#">← 所有食譜</a>
     <h1 style="margin-top:8px">${esc(r.name)}</h1>
     <div class="soft">${[r.category, ...(r.tags || [])].map(esc).join("・")}</div>
@@ -83,7 +83,7 @@ function renderRecipe(r) {
         <div class="pct">${pct(ing)}</div></div>`).join("")}
       <div class="bar"><span class="soft">目前是原食譜的 <b id="factor"></b> 倍</span><button class="reset" id="reset">回到原食譜</button></div>
     </div>
-    ${flour ? `<p class="soft">百分比是烘焙百分比，麵粉為 100%，不隨份量改變。</p>` : ""}
+    ${flour ? `<p class="soft">百分比是烘焙百分比，麵粉為 100%，不隨份量改變；液體以 1 毫升約 1 克計。</p>` : ""}
     <h2>步驟</h2><ol>${r.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>
     ${r.note ? `<h2>備註</h2><p>${esc(r.note)}</p>` : ""}`;
 
