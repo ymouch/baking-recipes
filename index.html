@@ -14,7 +14,8 @@
   h2 { font-size:18px; margin:26px 0 8px; }
   a { color:var(--accent); text-decoration:none; }
   .chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
-  .chip { border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:99px; padding:6px 14px; font:inherit; font-size:15px; cursor:pointer; }
+  .label { width:36px; align-self:center; }
+  .chip {border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:99px; padding:6px 14px; font:inherit; font-size:15px; cursor:pointer; }
   .chip.on { background:var(--accent); border-color:var(--accent); color:#fff; }
   .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; margin-top:16px; }
   .card { display:block; background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; color:inherit; }
@@ -49,14 +50,15 @@ const round1 = n => Math.round(n * 10) / 10;
 const area = (shape, size) => shape === "round" ? Math.PI * size * size / 4 : size * size;
 const unitOf = ing => ing.unit || "克";
 const filter = { cat: "全部", tag: "" };
+const TAG_GROUPS = [["做法", ["中種法", "液種法", "水合法"]], ["工具", ["麵包機", "電鍋"]], ["師傅", ["呂昇達", "吳克己"]], ["特色", ["減糖"]]];
 
 function renderList() {
-  const cats = ["全部", "蛋糕", "餅乾", "麵包", "塔派", "中式點心", "內餡醬料", "小菜", "其他"];
-  const tags = [...new Set(RECIPES.flatMap(r => r.tags || []))];
+  const order = ["吐司", "麵包", "蛋糕", "餅乾", "塔派", "中式點心", "內餡醬料", "小菜", "其他"];
+  const cats = ["全部", ...order.filter(c => RECIPES.some(r => r.category === c))];
   const shown = RECIPES.filter(r => (filter.cat === "全部" || r.category === filter.cat) && (!filter.tag || (r.tags || []).includes(filter.tag)));
   app.innerHTML = `<h1>烘焙食譜</h1>
     <div class="chips">${cats.map(c => `<button class="chip ${c === filter.cat ? "on" : ""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}</div>
-    <div class="chips">${tags.map(t => `<button class="chip ${t === filter.tag ? "on" : ""}" data-tag="${esc(t)}">${esc(t)}</button>`).join("")}</div>
+    ${TAG_GROUPS.map(([label, list]) => `<div class="chips"><span class="soft label">${label}</span>${list.map(t => `<button class="chip ${t === filter.tag ? "on" : ""}" data-tag="${esc(t)}">${esc(t)}</button>`).join("")}</div>`).join("")}
     <div class="grid">${shown.map(r => `<a class="card" href="#${esc(r.id)}">
       ${r.photo ? `<img src="${esc(r.photo)}" alt="${esc(r.name)}" loading="lazy">` : ""}
       <div><b>${esc(r.name)}</b><span class="soft">${esc(r.category)}・收集 ${esc(r.collected.replaceAll("-", "/"))}</span></div></a>`).join("") || `<p class="soft">這個分類還沒有食譜。</p>`}</div>`;

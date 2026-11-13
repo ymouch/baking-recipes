@@ -1,11 +1,12 @@
 // 食譜資料。每份食譜是一組 { }，新增時照範例格式加在清單裡。
-// category：蛋糕／餅乾／麵包／塔派／其他；collected：收集日期
+// category：吐司／麵包／蛋糕／餅乾／塔派／中式點心／內餡醬料／小菜／其他（只顯示有食譜的分類）
+// tags：只用 TAG_GROUPS（index.html）列出的標籤；collected：收集日期
 // mold：{ shape: "round"（圓形，size 是直徑吋數）或 "square"（方形，size 是邊長吋數） }；沒有模具就省略
 // 食材：g 是數量；unit 省略時是「克」；flour: true 是烘焙百分比的 100% 基準；piece 是換算顆數用
 const EGG = { unit: "顆", g: 50 };
 const RECIPES = [
   {
-    id: "milk-loaf", name: "日式鮮奶吐司", category: "麵包", tags: ["吐司", "鮮奶"], collected: "2026-11-09", photo: "",
+    id: "milk-loaf", name: "日式鮮奶吐司", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 262, flour: true },
       { name: "砂糖", g: 26 },
@@ -29,7 +30,7 @@ const RECIPES = [
     note: "原配方一條，模具是 Vermicular 琺瑯鑄鐵方型深烤模（17×13.6×13 公分，帶蓋）。換成其他吐司模時，烘烤時間增加 3～5 分鐘，確保中心熟透。食譜來源：ciao.kitchen",
   },
   {
-    id: "earl-grey-condensed-milk", name: "伯爵煉乳吐司", category: "麵包", tags: ["吐司", "伯爵茶"], collected: "2026-11-09", photo: "",
+    id: "earl-grey-condensed-milk", name: "伯爵煉乳吐司", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 255, flour: true },
       { name: "低筋麵粉", g: 45, flour: true },
@@ -45,7 +46,7 @@ const RECIPES = [
     note: "原始資料沒有寫單位，這裡推定為克，牛奶也可能是毫升。原提供者註明速發酵母 3 克的部分她改用新鮮酵母，但沒有寫用量。",
   },
   {
-    id: "low-sugar-soft-french", name: "低糖軟法麵包", category: "麵包", tags: ["軟法", "低糖"], collected: "2026-11-09", photo: "",
+    id: "low-sugar-soft-french", name: "低糖軟法麵包", category: "麵包", tags: ["減糖"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 400, flour: true },
       { name: "低筋麵粉", g: 100, flour: true },
@@ -68,7 +69,7 @@ const RECIPES = [
     note: "這裡是小份量；大份量是高筋麵粉 800 克、其他全部 2 倍。原配方不需蒸氣，高筋與低筋 8:2 口感較軟，可做三明治，也可加果乾（葡萄乾、蔓越莓、芒果乾、橘皮丁）。",
   },
   {
-    id: "greek-yogurt-quinoa", name: "希臘優格藜麥生吐司", category: "麵包", tags: ["吐司", "優格", "波蘭種"], collected: "2026-11-09", photo: "",
+    id: "greek-yogurt-quinoa", name: "希臘優格藜麥生吐司", category: "吐司", tags: ["液種法"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "波蘭種・水", g: 150 },
       { name: "波蘭種・速發酵母", g: 1 },
@@ -96,7 +97,7 @@ const RECIPES = [
     note: "份量為 12 兩吐司模 2 條。原配方的高筋麵粉是 King Arthur Bread Flour（蛋白質 12.7%）。烤溫與時間為參考值。",
   },
   {
-    id: "nana-milk-loaf", name: "白美娜公主吐司（呂昇達）", category: "麵包", tags: ["吐司", "鮮奶", "呂昇達"], collected: "2026-11-09", photo: "",
+    id: "nana-milk-loaf", name: "白美娜公主吐司（呂昇達）", category: "吐司", tags: ["呂昇達"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 1000, flour: true },
       { name: "砂糖", g: 150 },
@@ -116,7 +117,7 @@ const RECIPES = [
     note: "新鮮酵母 35 克可改即發酵母 12 克。截圖沒有烤溫與烤時。同一麵團也可做可頌、餐包與蘑菇麵包。",
   },
   {
-    id: "ruisui-milk-loaf", name: "瑞穗鮮奶吐司（呂昇達）", category: "麵包", tags: ["吐司", "鮮奶", "呂昇達"], collected: "2026-11-09", photo: "",
+    id: "ruisui-milk-loaf", name: "瑞穗鮮奶吐司（呂昇達）", category: "吐司", tags: ["呂昇達"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 1000, flour: true },
       { name: "瑞穗鮮奶", g: 750 },
@@ -133,7 +134,7 @@ const RECIPES = [
     note: "鮮奶原配方是 750～800 克，這裡先列 750 克。麵粉原配方用麥典實作工坊。",
   },
   {
-    id: "tianhou-loaf", name: "天厚吐司", category: "麵包", tags: ["吐司", "優格"], collected: "2026-11-09", photo: "",
+    id: "tianhou-loaf", name: "天厚吐司", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "山茶花高筋麵粉", g: 1000, flour: true },
       { name: "新鮮酵母", g: 30 },
@@ -150,7 +151,7 @@ const RECIPES = [
     note: "原始資料沒有寫單位，這裡推定為克。",
   },
   {
-    id: "streusel-loaf", name: "奶酥粒吐司", category: "麵包", tags: ["吐司", "奶酥", "麵包機"], collected: "2026-11-09", photo: "",
+    id: "streusel-loaf", name: "奶酥粒吐司", category: "吐司", tags: ["麵包機"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "雞蛋（去殼）", g: 50, piece: EGG },
       { name: "冰豆漿或冰牛奶", g: 100 },
@@ -172,7 +173,7 @@ const RECIPES = [
     note: "可做 450 克吐司一條，原作者用 450 克標準吐司盒。",
   },
   {
-    id: "fully-ripened-white", name: "完熟白吐司（殷奇償）", category: "麵包", tags: ["吐司"], collected: "2026-11-09", photo: "",
+    id: "fully-ripened-white", name: "完熟白吐司（殷奇償）", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 1000, flour: true },
       { name: "砂糖", g: 50 },
@@ -191,7 +192,7 @@ const RECIPES = [
     note: "麵粉要選高吸水量的；怕失敗可以用水合法。原始資料未寫單位，表格推定為克。",
   },
   {
-    id: "chocolate-cake-loaf", name: "巧克力蛋糕吐司", category: "麵包", tags: ["吐司", "巧克力"], collected: "2026-11-09", photo: "",
+    id: "chocolate-cake-loaf", name: "巧克力蛋糕吐司", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "麵糰・高筋麵粉", g: 300, flour: true },
       { name: "麵糰・奶粉", g: 20 },
@@ -212,7 +213,7 @@ const RECIPES = [
     note: "份量 2 條。另加少許檸檬汁。吐司盒＋麵糰＋蛋糕糊的總重約 950～970 克烤出來最剛好。手寫配方，請對照核對。",
   },
   {
-    id: "ciao-shokupan", name: "巧兒極品生吐司", category: "麵包", tags: ["吐司", "液種", "奶酥"], collected: "2026-11-09", photo: "",
+    id: "ciao-shokupan", name: "巧兒極品生吐司", category: "吐司", tags: ["液種法"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "液種・高筋麵粉", g: 200, flour: true },
       { name: "液種・水", g: 200 },
@@ -236,7 +237,7 @@ const RECIPES = [
     note: "麵團是六條吐司的量，奶酥是四條吐司的量，兩者份量基準不同。糖量是原提供者略調整過的。",
   },
   {
-    id: "wu-pull-apart-loaf", name: "手撕吐司（吳克己）", category: "麵包", tags: ["吐司", "中種法", "吳克己"], collected: "2026-11-09", photo: "",
+    id: "wu-pull-apart-loaf", name: "手撕吐司（吳克己）", category: "吐司", tags: ["中種法", "吳克己"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "中種・山茶花高筋麵粉", g: 350, flour: true },
       { name: "中種・水", g: 210 },
@@ -260,7 +261,7 @@ const RECIPES = [
     note: "份量是 12 兩模 2 條。手寫配方，起缸溫字跡有塗改（看起來是 26 或 28°C），烤溫也是手寫，請核對。",
   },
   {
-    id: "lu-japanese-milk-shokupan", name: "日式鮮奶生吐司（呂昇達）", category: "麵包", tags: ["吐司", "鮮奶", "呂昇達"], collected: "2026-11-09", photo: "",
+    id: "lu-japanese-milk-shokupan", name: "日式鮮奶生吐司（呂昇達）", category: "吐司", tags: ["呂昇達"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 1000, flour: true },
       { name: "砂糖", g: 100 },
@@ -279,7 +280,7 @@ const RECIPES = [
     note: "原配方用麥典實作工坊麵粉。截圖沒有攪拌方式。",
   },
   {
-    id: "french-butter-1000", name: "傳統法式奶油吐司（呂昇達，1000 克版）", category: "麵包", tags: ["吐司", "呂昇達"], collected: "2026-11-09", photo: "",
+    id: "french-butter-1000", name: "傳統法式奶油吐司（呂昇達，1000 克版）", category: "吐司", tags: ["呂昇達"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 1000, flour: true },
       { name: "脫脂奶粉", g: 50 },
@@ -299,7 +300,7 @@ const RECIPES = [
     note: "水原配方是 530～550 克，這裡先列 530 克。麵粉原配方用麥典實作工坊，奶油用藍絲可。",
   },
   {
-    id: "french-butter-2018", name: "2018 傳統法式奶油吐司（呂昇達，500 克版）", category: "麵包", tags: ["吐司", "呂昇達"], collected: "2026-11-09", photo: "",
+    id: "french-butter-2018", name: "2018 傳統法式奶油吐司（呂昇達，500 克版）", category: "吐司", tags: ["呂昇達"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 500, flour: true },
       { name: "奶粉", g: 20 },
@@ -319,7 +320,7 @@ const RECIPES = [
     note: "同一麵團也可做鹽可頌。",
   },
   {
-    id: "teary-loaf-sponge", name: "流淚吐司（中種版）", category: "麵包", tags: ["吐司", "中種法"], collected: "2026-11-09", photo: "",
+    id: "teary-loaf-sponge", name: "流淚吐司（中種版）", category: "吐司", tags: ["中種法"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "中種・高筋麵粉", g: 440, flour: true },
       { name: "中種・速發酵母", g: 5 },
@@ -342,7 +343,7 @@ const RECIPES = [
     note: "份量是 12 兩模 2 條。原配方蛋寫 1 個，這裡以每顆 50 克計。高筋麵粉原作者用凱薩琳；鮮奶油可用無糖優格替代。",
   },
   {
-    id: "teary-loaf-sakura-chiffon", name: "流淚吐司＋櫻花戚風蛋糕", category: "麵包", tags: ["吐司", "蛋糕", "天然酵母"], collected: "2026-11-09", photo: "",
+    id: "teary-loaf-sakura-chiffon", name: "流淚吐司＋櫻花戚風蛋糕", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "吐司・凱薩琳高筋麵粉", g: 750, flour: true },
       { name: "吐司・上白糖", g: 75 },
@@ -363,7 +364,7 @@ const RECIPES = [
     note: "一次示範課的份量：流淚吐司 3 條加日式戚風蛋糕 2 個。吐司麵糰總重 1449 克，戚風麵糊總重 900 克。",
   },
   {
-    id: "poolish-natural-milk", name: "液種法天然鮮奶吐司", category: "麵包", tags: ["吐司", "液種", "鮮奶"], collected: "2026-11-09", photo: "",
+    id: "poolish-natural-milk", name: "液種法天然鮮奶吐司", category: "吐司", tags: ["液種法"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "液種・高筋麵粉", g: 160, flour: true },
       { name: "液種・水", g: 160 },
@@ -391,7 +392,7 @@ const RECIPES = [
     note: "這是完整版。簡易版：液種相同；本種高筋麵粉 400、鮮奶 200、酵母粉 3.2、砂糖 50、鹽 8、奶油 40 克。來源為 pixnet 部落格 davidnfk。",
   },
   {
-    id: "water-roux-free-shokupan", name: "生吐司（水合法）", category: "麵包", tags: ["吐司", "水合法"], collected: "2026-11-09", photo: "",
+    id: "water-roux-free-shokupan", name: "生吐司（水合法）", category: "吐司", tags: ["水合法"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 280, flour: true },
       { name: "細砂糖", g: 40 },
@@ -413,7 +414,7 @@ const RECIPES = [
     note: "份量是 12 兩吐司。顏色可自行調整烤溫。",
   },
   {
-    id: "red-bean-cube", name: "紅魔方紅豆吐司（吳克己）", category: "麵包", tags: ["吐司", "紅豆", "吳克己"], collected: "2026-11-09", photo: "",
+    id: "red-bean-cube", name: "紅魔方紅豆吐司（吳克己）", category: "吐司", tags: ["吳克己"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "鷹牌高筋麵粉", g: 581, flour: true },
       { name: "拿破崙法國專用粉", g: 249, flour: true },
@@ -441,7 +442,7 @@ const RECIPES = [
     note: "可做方型模 5 個（三能 SN2050）。本配方麵粉比例 70:30，配方總重 1688.2 克（不含內餡）。",
   },
   {
-    id: "sesame-soft-q", name: "超軟 Q 芝麻吐司", category: "麵包", tags: ["吐司", "芝麻"], collected: "2026-11-09", photo: "",
+    id: "sesame-soft-q", name: "超軟 Q 芝麻吐司", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 240, flour: true },
       { name: "糯米粉", g: 60 },
@@ -468,7 +469,7 @@ const RECIPES = [
     note: "麵團約 630 克，是 12 兩吐司 1 條的份量。烘焙百分比的麵粉基準只算高筋麵粉，糯米粉 60 克另外列。",
   },
   {
-    id: "gold-loaf-improved", name: "金牌吐司改良版", category: "麵包", tags: ["吐司", "鮮奶"], collected: "2026-11-09", photo: "",
+    id: "gold-loaf-improved", name: "金牌吐司改良版", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 1000, flour: true },
       { name: "砂糖", g: 80 },
@@ -487,7 +488,7 @@ const RECIPES = [
     note: "可做 12 兩吐司 4 條，含水量 70%。速發酵母 10 克可改新鮮酵母 30 克。",
   },
   {
-    id: "gold-milk-loaf", name: "金牌牛奶吐司（吳寶春配方）", category: "麵包", tags: ["吐司", "鮮奶", "吳寶春"], collected: "2026-11-09", photo: "",
+    id: "gold-milk-loaf", name: "金牌牛奶吐司（吳寶春配方）", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 300, flour: true },
       { name: "細砂糖", g: 30 },
@@ -510,7 +511,7 @@ const RECIPES = [
     note: "這是換算成 12 兩吐司模 1 條的份量。原始配方：高筋麵粉 1000、砂糖 80、鹽 18、奶油 50、水 450、酵母 10、牛奶 230 克，約 1～2 條（截圖原文如此）。烤溫是部落格作者依自家烤箱調整。",
   },
   {
-    id: "egg-milk-loaf", name: "雞蛋鮮奶吐司", category: "麵包", tags: ["吐司", "中種法", "鮮奶", "麵包機"], collected: "2026-11-09", photo: "",
+    id: "egg-milk-loaf", name: "雞蛋鮮奶吐司", category: "吐司", tags: ["中種法", "麵包機"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "中種・高筋麵粉", g: 292, flour: true },
       { name: "中種・酵母", g: 5 },
@@ -533,7 +534,7 @@ const RECIPES = [
     note: "這裡是 12 兩模 2 條；原配方 18 條是麵粉 2625＋1125、酵母 45、全蛋 10 顆（約 500 克）、中種鮮奶 1000、糖 675、鹽 45、主麵鮮奶 750、奶油 375 克。主麵鮮奶要先冷凍，當冰塊用來控溫。糖可從 75 減為 60 克。Word 檔手記：烤溫改 185°C；後發 90 分鐘略過發，下次可增加酵母、縮短發酵時間；若做甜麵包，後發約 30～40 分鐘。另有麵包機做法：中種打 4 分鐘靜置 90 分鐘；主麵（鹽、奶油後放）成團後加鹽，打到光滑，下奶油再打到薄膜，內鍋外用冰寶降溫，終溫 26～28°C；鬆弛 15 分鐘、擀捲放回內鍋發酵到 8 分滿，改蒸麵包模式烘烤。",
   },
   {
-    id: "snow-honey-loaf", name: "雪花蜂蜜吐司（吳克己）", category: "麵包", tags: ["吐司", "中種法", "蜂蜜", "吳克己"], collected: "2026-11-09", photo: "",
+    id: "snow-honey-loaf", name: "雪花蜂蜜吐司（吳克己）", category: "吐司", tags: ["中種法", "吳克己"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "中種・凱薩琳麵粉", g: 700, flour: true },
       { name: "中種・純真蜂蜜", g: 20 },
@@ -559,7 +560,7 @@ const RECIPES = [
     note: "可做 4 條，配方總重 2114 克。",
   },
   {
-    id: "banana-loaf", name: "香蕉吐司", category: "麵包", tags: ["吐司", "香蕉"], collected: "2026-11-09", photo: "",
+    id: "banana-loaf", name: "香蕉吐司", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 550, flour: true },
       { name: "糖", g: 40 },
@@ -581,7 +582,7 @@ const RECIPES = [
     note: "兩條 12 兩吐司。牛奶原配方是 200～250 克，這裡先列 200 克。香蕉一定要冷凍過，否則香味不足、麵團會粉粉的。截圖沒有寫烤溫。",
   },
   {
-    id: "autolyse-milk-loaf", name: "鮮奶吐司（水合法）", category: "麵包", tags: ["吐司", "鮮奶", "水合法"], collected: "2026-11-09", photo: "",
+    id: "autolyse-milk-loaf", name: "鮮奶吐司（水合法）", category: "吐司", tags: ["水合法"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "A・高筋麵粉", g: 1000, flour: true },
       { name: "A・奶粉", g: 40 },
@@ -602,7 +603,7 @@ const RECIPES = [
     note: "12 兩吐司模，每條麵糰 450 克，4 條份量。鮮奶改水時要減 10%（冷水 630 克）；乾酵母 10 克可改新鮮酵母 30 克；鮮奶油可改無糖優格。可做圓頂、山型（雙峰）或三峰（150 克×3）。",
   },
   {
-    id: "old-style-big-bun", name: "小時候大餅", category: "中式點心", tags: ["老麵", "平底鍋"], collected: "2026-11-13", photo: "",
+    id: "old-style-big-bun", name: "小時候大餅", category: "中式點心", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "老麵・中筋麵粉", g: 200 },
       { name: "老麵・水", g: 100 },
@@ -625,7 +626,7 @@ const RECIPES = [
     note: "老麵的酵母 1 克約 1/4 匙；主麵團酵母 10 克、泡打粉 15 克各約 1 大匙。",
   },
   {
-    id: "handmade-tangyuan", name: "手工湯圓", category: "中式點心", tags: ["糯米"], collected: "2026-11-13", photo: "",
+    id: "handmade-tangyuan", name: "手工湯圓", category: "中式點心", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "糯米粉", g: 300 },
     ],
@@ -637,7 +638,7 @@ const RECIPES = [
     note: "水與粄娘都是適量，原文沒有數字。",
   },
   {
-    id: "matcha-lotus-root-cake", name: "抹茶蓮藕糕", category: "中式點心", tags: ["抹茶", "電鍋"], collected: "2026-11-13", photo: "",
+    id: "matcha-lotus-root-cake", name: "抹茶蓮藕糕", category: "中式點心", tags: ["電鍋"], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "抹茶粉", g: 4 },
       { name: "蓮藕粉", g: 80 },
@@ -668,7 +669,7 @@ const RECIPES = [
     note: "手寫配方，請核對數字。",
   },
   {
-    id: "crystal-dumpling", name: "水晶餃（素）", category: "中式點心", tags: ["太白粉"], collected: "2026-11-13", photo: "",
+    id: "crystal-dumpling", name: "水晶餃（素）", category: "中式點心", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "日本太白粉", g: 1, unit: "量杯" },
       { name: "滾水", g: 0.25, unit: "量杯" },
@@ -685,7 +686,7 @@ const RECIPES = [
     note: "原作者吃蛋奶素，餡料是菜脯、乾香菇、皮絲、薑片爆香，加糖、醬油、胡椒粉、香油、五香粉、少許鹽；葷食可隨意。餡料口味要重一些。一般太白粉也可以，只是沒那麼透。",
   },
   {
-    id: "okinawa-brown-sugar-mantou", name: "沖繩黑糖饅頭", category: "中式點心", tags: ["饅頭", "黑糖"], collected: "2026-11-13", photo: "",
+    id: "okinawa-brown-sugar-mantou", name: "沖繩黑糖饅頭", category: "中式點心", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "中筋麵粉", g: 600, flour: true },
       { name: "沖繩黑糖", g: 105 },
@@ -702,7 +703,7 @@ const RECIPES = [
     note: "想要顏色更深可多加黑糖，但不宜過多，否則不好發酵。",
   },
   {
-    id: "fenguo", name: "粉粿", category: "中式點心", tags: ["地瓜粉"], collected: "2026-11-13", photo: "",
+    id: "fenguo", name: "粉粿", category: "中式點心", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "熱水", g: 3.5, unit: "杯" },
       { name: "梔子仁", g: 7, unit: "顆" },
@@ -720,7 +721,7 @@ const RECIPES = [
     note: "",
   },
   {
-    id: "red-bean-songgao", name: "紅豆鬆糕（電鍋版）", category: "中式點心", tags: ["紅豆", "電鍋"], collected: "2026-11-13", photo: "",
+    id: "red-bean-songgao", name: "紅豆鬆糕（電鍋版）", category: "中式點心", tags: ["電鍋"], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "蜜紅豆", g: 200 },
       { name: "在來米粉", g: 300 },
@@ -738,7 +739,7 @@ const RECIPES = [
     note: "乾果可換成自己喜歡的。",
   },
   {
-    id: "caozaigui", name: "草仔粿", category: "中式點心", tags: ["艾草", "蘿蔔絲"], collected: "2026-11-13", photo: "",
+    id: "caozaigui", name: "草仔粿", category: "中式點心", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "粿皮・艾草粉", g: 8 },
       { name: "粿皮・水", g: 300 },
@@ -763,7 +764,7 @@ const RECIPES = [
     note: "每個 60 克，可做 14 個。原表總重寫粿皮 570、內餡 276、合計 846 克，但逐項加總是 569 與 277，可能有一個數字讀錯或原表四捨五入。食譜來源：聯瑜烘焙。原文沒寫蒸的時間。",
   },
   {
-    id: "rice-turnip-cake", name: "燙米蘿蔔糕", category: "中式點心", tags: ["蘿蔔", "芋頭"], collected: "2026-11-13", photo: "",
+    id: "rice-turnip-cake", name: "燙米蘿蔔糕", category: "中式點心", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "在來米", g: 600 },
       { name: "水", g: 1750 },
@@ -783,7 +784,7 @@ const RECIPES = [
     note: "原作者用乳酪蛋糕模（抹薄油方便脫模），每個 1 公斤，可裝 7 個。可 4 個做原味，剩下的麵糊加 500 克粗芋頭絲拌勻，做 3 個芋頭蘿蔔糕。",
   },
   {
-    id: "pineapple-cake", name: "鳳梨酥", category: "中式點心", tags: ["鳳梨"], collected: "2026-11-13", photo: "",
+    id: "pineapple-cake", name: "鳳梨酥", category: "中式點心", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "無鹽奶油（室溫軟化）", g: 170 },
       { name: "糖粉", g: 40 },
@@ -805,7 +806,7 @@ const RECIPES = [
     note: "模型尺寸 6.5×3.2×2.2 公分，可做 20 個。內餡做法見「鳳梨酥內餡」。手寫筆記重點：奶油與粉約 1:2 為佳，麵團不能太乾否則易裂；奶油不要打發、不需冷藏直接操作；也有人加杏仁粉或少許中筋粉；鳳梨與糖比例約 1:4 為佳，減糖要留意保存時間；餅皮與內餡常見 30:15～25；賞味期約 8～10 天。",
   },
   {
-    id: "pineapple-filling", name: "鳳梨酥內餡", category: "內餡醬料", tags: ["鳳梨"], collected: "2026-11-13", photo: "",
+    id: "pineapple-filling", name: "鳳梨酥內餡", category: "內餡醬料", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "金鑽鳳梨（2 顆）", g: 980 },
       { name: "冰糖", g: 180 },
@@ -821,7 +822,7 @@ const RECIPES = [
     note: "金鑽和土鳳梨都適合。沒有蘭姆酒可不加，加香草籽也有風味。冰過後更入味、好整形。來源：宅媽樂活誌。",
   },
   {
-    id: "red-bean-paste", name: "紅豆內餡", category: "內餡醬料", tags: ["紅豆"], collected: "2026-11-13", photo: "",
+    id: "red-bean-paste", name: "紅豆內餡", category: "內餡醬料", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "紅豆", g: 300 },
       { name: "開水", g: 900 },
@@ -838,7 +839,7 @@ const RECIPES = [
     note: "做蛋糕捲、銅鑼燒內餡不要炒太乾；要揉成圓球包餡就炒乾一些。來源：宅媽樂活誌。",
   },
   {
-    id: "mustard-salad-dressing", name: "法式芥末沙拉醬", category: "內餡醬料", tags: ["沙拉醬"], collected: "2026-11-13", photo: "",
+    id: "mustard-salad-dressing", name: "法式芥末沙拉醬", category: "內餡醬料", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "蒜頭", g: 10 },
       { name: "無鹽花生", g: 8 },
@@ -853,7 +854,7 @@ const RECIPES = [
     note: "蒜頭與花生是 10 克、8 克以上。原分享者說「因為是做生意用，食譜有少說 2 個」，所以這份配方不完整。用不同的沙拉醬做，味道會不一樣。",
   },
   {
-    id: "low-sugar-mayo", name: "減糖美乃滋", category: "內餡醬料", tags: ["沙拉醬", "減糖"], collected: "2026-11-13", photo: "",
+    id: "low-sugar-mayo", name: "減糖美乃滋", category: "內餡醬料", tags: ["減糖"], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "赤藻糖（可減）", g: 80 },
       { name: "玫瑰鹽", g: 4 },
@@ -870,7 +871,7 @@ const RECIPES = [
     note: "原配方雞蛋寫 1 顆，這裡以 50 克計。水果醋 12～20 毫升，這裡先列 12；白醋或檸檬汁也可以。其他植物油也可以，但椰子油冷藏會凝固，不適合。",
   },
   {
-    id: "cold-chicken-breast", name: "涼拌雞胸肉", category: "小菜", tags: ["涼拌", "無糖"], collected: "2026-11-13", photo: "",
+    id: "cold-chicken-breast", name: "涼拌雞胸肉", category: "小菜", tags: ["減糖"], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "紫洋蔥", g: 1, unit: "顆" },
       { name: "香菜", g: 1, unit: "大把" },
@@ -884,7 +885,7 @@ const RECIPES = [
     note: "原文的肉與調味料都沒有份量，只有蔬菜有數量。這道沒有用糖。",
   },
   {
-    id: "golden-kimchi", name: "黃金泡菜", category: "小菜", tags: ["泡菜"], collected: "2026-11-13", photo: "",
+    id: "golden-kimchi", name: "黃金泡菜", category: "小菜", tags: [], collected: "2026-11-13", photo: "",
     ingredients: [
       { name: "高麗菜", g: 2000 },
       { name: "殺菁用鹽", g: 30 },
