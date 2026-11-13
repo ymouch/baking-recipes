@@ -51,7 +51,7 @@ const unitOf = ing => ing.unit || "克";
 const filter = { cat: "全部", tag: "" };
 
 function renderList() {
-  const cats = ["全部", "蛋糕", "餅乾", "麵包", "塔派", "其他"];
+  const cats = ["全部", "蛋糕", "餅乾", "麵包", "塔派", "中式點心", "內餡醬料", "小菜", "其他"];
   const tags = [...new Set(RECIPES.flatMap(r => r.tags || []))];
   const shown = RECIPES.filter(r => (filter.cat === "全部" || r.category === filter.cat) && (!filter.tag || (r.tags || []).includes(filter.tag)));
   app.innerHTML = `<h1>烘焙食譜</h1>
