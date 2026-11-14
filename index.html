@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>烘焙食譜</title>
+<title>家庭食譜</title>
 <style>
   :root { color-scheme: light; --bg:#faf6ef; --card:#fff; --ink:#3b2f26; --soft:#85756a; --accent:#b5652f; --line:#e8dfd2; }
   * { box-sizing:border-box; }
@@ -74,7 +74,7 @@ function renderList() {
   const order = ["吐司", "麵包", "蛋糕", "餅乾", "塔派泡芙", "中式點心", "冰品奶酪", "家常料理", "內餡醬料", "小菜", "其他"];
   const cats = ["全部", ...order.filter(c => RECIPES.some(r => r.category === c))];
   const shown = RECIPES.filter(r => inCat(r) && (!filter.tag || (r.tags || []).includes(filter.tag)));
-  app.innerHTML = `<h1>烘焙食譜</h1>
+  app.innerHTML = `<h1>家庭食譜</h1>
     <div class="chips">${cats.map(c => `<button class="chip ${c === filter.cat ? "on" : ""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}</div>
     ${ROW_ORDER.map(i => {
       const [label, list] = TAG_GROUPS[i];
