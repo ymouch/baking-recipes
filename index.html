@@ -63,24 +63,32 @@ const round1 = n => Math.round(n * 10) / 10;
 const area = (shape, size) => shape === "round" ? Math.PI * size * size / 4 : size * size;
 const unitOf = ing => ing.unit || "克";
 const filter = { cat: "全部", tag: "" };
-const TAG_GROUPS = [["做法", ["中種法", "液種法", "水合法"]], ["工具", ["麵包機", "電鍋", "電子鍋", "鬆餅機", "平底鍋"]], ["師傅", ["呂昇達", "吳克己"]], ["特色", ["免烤箱", "減糖", "無蛋"]], ["種類", ["戚風", "蛋糕捲", "磅蛋糕", "乳酪蛋糕"]], ["待補", ["缺步驟"]]];
+const TAG_GROUPS = [["做法", ["中種法", "液種法", "水合法", "湯種", "免揉", "天然酵母"]], ["工具", ["麵包機", "電鍋", "電子鍋", "鬆餅機", "平底鍋"]], ["師傅", ["呂昇達", "吳克己", "殷奇償"]], ["特色", ["免烤箱", "減糖", "無蛋"]], ["種類", ["戚風", "蛋糕捲", "磅蛋糕", "乳酪蛋糕", "餐包", "甜麵包", "歐式", "貝果", "可頌"]], ["待補", ["缺步驟"]]];
+const ROW_ORDER = [4, 0, 1, 2, 3, 5]; // 種類排第一列；顏色仍依 TAG_GROUPS 的位置
+const inCat = r => filter.cat === "全部" || r.category === filter.cat;
+const usedTags = list => list.filter(t => RECIPES.some(r => inCat(r) && (r.tags || []).includes(t)));
 const groupOf = t => TAG_GROUPS.findIndex(([, list]) => list.includes(t));
 const pills = r => (r.tags || []).map(t => `<span class="pill g${groupOf(t)}">${esc(t)}</span>`).join("");
 
 function renderList() {
   const order = ["吐司", "麵包", "蛋糕", "餅乾", "塔派泡芙", "中式點心", "冰品奶酪", "內餡醬料", "小菜", "其他"];
   const cats = ["全部", ...order.filter(c => RECIPES.some(r => r.category === c))];
-  const shown = RECIPES.filter(r => (filter.cat === "全部" || r.category === filter.cat) && (!filter.tag || (r.tags || []).includes(filter.tag)));
+  const shown = RECIPES.filter(r => inCat(r) && (!filter.tag || (r.tags || []).includes(filter.tag)));
   app.innerHTML = `<h1>烘焙食譜</h1>
     <div class="chips">${cats.map(c => `<button class="chip ${c === filter.cat ? "on" : ""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}</div>
-    ${TAG_GROUPS.map(([label, list], i) => {
-      const used = list.filter(t => RECIPES.some(r => (r.tags || []).includes(t)));
-      return used.length ? `<div class="chips"><span class="soft label">${label}</span>${used.map(t => `<button class="chip g${i} ${t === filter.tag ? "on" : ""}" data-tag="${esc(t)}">${esc(t)}</button>`).join("")}</div>` : "";
+    ${ROW_ORDER.map(i => {
+      const [label, list] = TAG_GROUPS[i];
+      const used = label === "種類" && filter.cat === "全部" ? [] : usedTags(list);
+      return used.length ?`<div class="chips"><span class="soft label">${label}</span>${used.map(t => `<button class="chip g${i} ${t === filter.tag ? "on" : ""}" data-tag="${esc(t)}">${esc(t)}</button>`).join("")}</div>` : "";
     }).join("")}
     <div class="grid">${shown.map(r => `<a class="card" href="#${esc(r.id)}">
       ${r.photo ? `<img src="${esc(r.photo)}" alt="${esc(r.name)}" loading="lazy">` : ""}
       <div><b>${esc(r.name)}</b><span class="soft">${esc(r.category)}・收集 ${esc(r.collected.replaceAll("-", "/"))}</span>${pills(r)}</div></a>`).join("") || `<p class="soft">這個分類還沒有食譜。</p>`}</div>`;
-  app.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => { filter.cat = b.dataset.cat; renderList(); });
+  app.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => {
+    filter.cat = b.dataset.cat;
+    if (filter.tag && !usedTags([filter.tag]).length) filter.tag = "";
+    renderList();
+  });
   app.querySelectorAll("[data-tag]").forEach(b => b.onclick = () => { filter.tag = filter.tag === b.dataset.tag ? "" : b.dataset.tag; renderList(); });
 }
 
