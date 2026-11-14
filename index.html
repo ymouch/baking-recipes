@@ -24,6 +24,8 @@
   .g3 { background:#f6eddb; border-color:#e7d6b2; color:#7a5d2f; }
   .g4 { background:#f6e7e4; border-color:#e6cdc8; color:#84504a; }
   .chip.g4.on { background:#9c625b; border-color:#9c625b; }
+  .g5 { background:#eeecea; border-color:#d9d5d1; color:#6b6460; }
+  .chip.g5.on { background:#7d7570; border-color:#7d7570; }
   .chip.g0.on { background:#5f7f59; border-color:#5f7f59; }
   .chip.g1.on { background:#5d7895; border-color:#5d7895; }
   .chip.g2.on { background:#82607a; border-color:#82607a; }
@@ -61,7 +63,7 @@ const round1 = n => Math.round(n * 10) / 10;
 const area = (shape, size) => shape === "round" ? Math.PI * size * size / 4 : size * size;
 const unitOf = ing => ing.unit || "克";
 const filter = { cat: "全部", tag: "" };
-const TAG_GROUPS = [["做法", ["中種法", "液種法", "水合法"]], ["工具", ["麵包機", "電鍋", "電子鍋", "鬆餅機", "平底鍋"]], ["師傅", ["呂昇達", "吳克己"]], ["特色", ["免烤箱", "減糖", "無蛋"]], ["種類", ["戚風", "蛋糕捲", "磅蛋糕", "乳酪蛋糕"]]];
+const TAG_GROUPS = [["做法", ["中種法", "液種法", "水合法"]], ["工具", ["麵包機", "電鍋", "電子鍋", "鬆餅機", "平底鍋"]], ["師傅", ["呂昇達", "吳克己"]], ["特色", ["免烤箱", "減糖", "無蛋"]], ["種類", ["戚風", "蛋糕捲", "磅蛋糕", "乳酪蛋糕"]], ["待補", ["缺步驟"]]];
 const groupOf = t => TAG_GROUPS.findIndex(([, list]) => list.includes(t));
 const pills = r => (r.tags || []).map(t => `<span class="pill g${groupOf(t)}">${esc(t)}</span>`).join("");
 

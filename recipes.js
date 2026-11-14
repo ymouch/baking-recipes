@@ -30,7 +30,7 @@ const RECIPES = [
     note: "原配方一條，模具是 Vermicular 琺瑯鑄鐵方型深烤模（17×13.6×13 公分，帶蓋）。換成其他吐司模時，烘烤時間增加 3～5 分鐘，確保中心熟透。食譜來源：ciao.kitchen",
   },
   {
-    id: "earl-grey-condensed-milk", name: "伯爵煉乳吐司", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
+    id: "earl-grey-condensed-milk", name: "伯爵煉乳吐司", category: "吐司", tags: ["缺步驟"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 255, flour: true },
       { name: "低筋麵粉", g: 45, flour: true },
@@ -134,7 +134,7 @@ const RECIPES = [
     note: "鮮奶原配方是 750～800 克，這裡先列 750 克。麵粉原配方用麥典實作工坊。",
   },
   {
-    id: "tianhou-loaf", name: "天厚吐司", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
+    id: "tianhou-loaf", name: "天厚吐司", category: "吐司", tags: ["缺步驟"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "山茶花高筋麵粉", g: 1000, flour: true },
       { name: "新鮮酵母", g: 30 },
@@ -151,7 +151,7 @@ const RECIPES = [
     note: "原始資料沒有寫單位，這裡推定為克。",
   },
   {
-    id: "streusel-loaf", name: "奶酥粒吐司", category: "吐司", tags: ["麵包機"], collected: "2026-11-09", photo: "",
+    id: "streusel-loaf", name: "奶酥粒吐司", category: "吐司", tags: ["麵包機", "缺步驟"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "雞蛋（去殼）", g: 50, piece: EGG },
       { name: "冰豆漿或冰牛奶", g: 100 },
@@ -192,7 +192,7 @@ const RECIPES = [
     note: "麵粉要選高吸水量的；怕失敗可以用水合法。原始資料未寫單位，表格推定為克。",
   },
   {
-    id: "chocolate-cake-loaf", name: "巧克力蛋糕吐司", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
+    id: "chocolate-cake-loaf", name: "巧克力蛋糕吐司", category: "吐司", tags: ["缺步驟"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "麵糰・高筋麵粉", g: 300, flour: true },
       { name: "麵糰・奶粉", g: 20 },
@@ -213,7 +213,7 @@ const RECIPES = [
     note: "份量 2 條。另加少許檸檬汁。吐司盒＋麵糰＋蛋糕糊的總重約 950～970 克烤出來最剛好。手寫配方，請對照核對。",
   },
   {
-    id: "ciao-shokupan", name: "巧兒極品生吐司", category: "吐司", tags: ["液種法"], collected: "2026-11-09", photo: "",
+    id: "ciao-shokupan", name: "巧兒極品生吐司", category: "吐司", tags: ["液種法", "缺步驟"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "液種・高筋麵粉", g: 200, flour: true },
       { name: "液種・水", g: 200 },
@@ -343,7 +343,7 @@ const RECIPES = [
     note: "份量是 12 兩模 2 條。原配方蛋寫 1 個，這裡以每顆 50 克計。高筋麵粉原作者用凱薩琳；鮮奶油可用無糖優格替代。",
   },
   {
-    id: "teary-loaf-sakura-chiffon", name: "流淚吐司＋櫻花戚風蛋糕", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
+    id: "teary-loaf-sakura-chiffon", name: "流淚吐司＋櫻花戚風蛋糕", category: "吐司", tags: ["缺步驟"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "吐司・凱薩琳高筋麵粉", g: 750, flour: true },
       { name: "吐司・上白糖", g: 75 },
@@ -469,7 +469,7 @@ const RECIPES = [
     note: "麵團約 630 克，是 12 兩吐司 1 條的份量。烘焙百分比的麵粉基準只算高筋麵粉，糯米粉 60 克另外列。",
   },
   {
-    id: "gold-loaf-improved", name: "金牌吐司改良版", category: "吐司", tags: [], collected: "2026-11-09", photo: "",
+    id: "gold-loaf-improved", name: "金牌吐司改良版", category: "吐司", tags: ["缺步驟"], collected: "2026-11-09", photo: "",
     ingredients: [
       { name: "高筋麵粉", g: 1000, flour: true },
       { name: "砂糖", g: 80 },
@@ -1665,7 +1665,7 @@ const RECIPES = [
     "id": "cranberry-shortbread",
     "name": "蔓越莓酥餅",
     "category": "餅乾",
-    "tags": [],
+    "tags": ["缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -1705,7 +1705,7 @@ const RECIPES = [
     "id": "chocolate-almond-shortbread",
     "name": "巧克力杏仁酥餅",
     "category": "餅乾",
-    "tags": [],
+    "tags": ["缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -1749,9 +1749,7 @@ const RECIPES = [
     "id": "niu-li-lu-sheng-da",
     "name": "牛粒（呂昇達）",
     "category": "蛋糕",
-    "tags": [
-      "呂昇達"
-    ],
+    "tags": ["呂昇達", "缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -1818,7 +1816,7 @@ const RECIPES = [
     "id": "honey-madeleine",
     "name": "蜂蜜瑪德蓮",
     "category": "蛋糕",
-    "tags": [],
+    "tags": ["缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -1861,7 +1859,7 @@ const RECIPES = [
     "id": "butter-egg-cake",
     "name": "奶油雞蛋糕",
     "category": "蛋糕",
-    "tags": [],
+    "tags": ["缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -1958,10 +1956,7 @@ const RECIPES = [
     "id": "american-pancake-lu-sheng-da",
     "name": "美式熱鬆餅（呂昇達）",
     "category": "蛋糕",
-    "tags": [
-      "呂昇達",
-      "免烤箱"
-    ],
+    "tags": ["呂昇達", "免烤箱", "缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -2009,9 +2004,7 @@ const RECIPES = [
     "id": "american-biscuit-lu-sheng-da",
     "name": "美式比司吉（呂昇達）",
     "category": "麵包",
-    "tags": [
-      "呂昇達"
-    ],
+    "tags": ["呂昇達", "缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -2058,10 +2051,7 @@ const RECIPES = [
     "id": "maple-butter-spread-lu-sheng-da",
     "name": "楓糖奶油抹醬（呂昇達）",
     "category": "內餡醬料",
-    "tags": [
-      "呂昇達",
-      "免烤箱"
-    ],
+    "tags": ["呂昇達", "免烤箱", "缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -2216,10 +2206,7 @@ const RECIPES = [
     "id": "waffle",
     "name": "格子鬆餅",
     "category": "蛋糕",
-    "tags": [
-      "鬆餅機",
-      "免烤箱"
-    ],
+    "tags": ["鬆餅機", "免烤箱", "缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -2645,9 +2632,7 @@ const RECIPES = [
     "id": "french-milk-choux-lu-sheng-da",
     "name": "法式鮮奶泡芙（呂昇達）",
     "category": "塔派泡芙",
-    "tags": [
-      "呂昇達"
-    ],
+    "tags": ["呂昇達", "缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -2727,9 +2712,7 @@ const RECIPES = [
     "id": "passion-fruit-panna-cotta-4-layer",
     "name": "四層百香果奶酪",
     "category": "冰品奶酪",
-    "tags": [
-      "免烤箱"
-    ],
+    "tags": ["免烤箱", "缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -2851,9 +2834,7 @@ const RECIPES = [
     "id": "strawberry-yogurt-panna-cotta",
     "name": "草莓優格奶酪",
     "category": "冰品奶酪",
-    "tags": [
-      "免烤箱"
-    ],
+    "tags": ["免烤箱", "缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -3061,9 +3042,7 @@ const RECIPES = [
     "id": "red-bean-filling-butter",
     "name": "紅豆內餡（奶油沙拉油版）",
     "category": "內餡醬料",
-    "tags": [
-      "免烤箱"
-    ],
+    "tags": ["免烤箱", "缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -3400,9 +3379,7 @@ const RECIPES = [
     "id": "scallion-pancake",
     "name": "蔥油餅",
     "category": "中式點心",
-    "tags": [
-      "免烤箱"
-    ],
+    "tags": ["免烤箱", "缺步驟"],
     "collected": "2026-11-13",
     "photo": "",
     "ingredients": [
@@ -3735,7 +3712,7 @@ const RECIPES = [
     "id": "instant-coffee-roll-cake",
     "name": "咖啡蛋糕捲",
     "category": "蛋糕",
-    "tags": ["蛋糕捲"],
+    "tags": ["蛋糕捲", "缺步驟"],
     "collected": "2026-11-14",
     "photo": "",
     "ingredients": [
@@ -4469,7 +4446,7 @@ const RECIPES = [
     "id": "matcha-lovers-pudding-cake",
     "name": "抹茶戀人布丁燒",
     "category": "蛋糕",
-    "tags": [],
+    "tags": ["缺步驟"],
     "collected": "2026-11-14",
     "photo": "",
     "ingredients": [
@@ -4884,7 +4861,7 @@ const RECIPES = [
     "id": "mango-puree-chiffon-6-inch",
     "name": "新鮮芒果泥戚風蛋糕（6吋兩顆）",
     "category": "蛋糕",
-    "tags": ["戚風"],
+    "tags": ["戚風", "缺步驟"],
     "collected": "2026-11-14",
     "photo": "",
     "ingredients": [
@@ -4923,7 +4900,7 @@ const RECIPES = [
     "id": "mango-chiffon-sheet-cake-with-cream",
     "name": "芒果戚風蛋糕（邱獻勝）",
     "category": "蛋糕",
-    "tags": ["戚風"],
+    "tags": ["戚風", "缺步驟"],
     "collected": "2026-11-14",
     "photo": "",
     "ingredients": [
@@ -5003,7 +4980,7 @@ const RECIPES = [
     "id": "honey-yakult-chiffon",
     "name": "蜂蜜多多戚風蛋糕（邱獻勝）",
     "category": "蛋糕",
-    "tags": ["戚風"],
+    "tags": ["戚風", "缺步驟"],
     "collected": "2026-11-14",
     "photo": "",
     "ingredients": [
@@ -5063,7 +5040,7 @@ const RECIPES = [
     "id": "tieguanyin-chiffon",
     "name": "鐵觀音戚風蛋糕",
     "category": "蛋糕",
-    "tags": ["戚風"],
+    "tags": ["戚風", "缺步驟"],
     "collected": "2026-11-14",
     "photo": "",
     "ingredients": [
@@ -5118,7 +5095,7 @@ const RECIPES = [
     "id": "black-sesame-chiffon-8-inch",
     "name": "黑芝麻戚風蛋糕",
     "category": "蛋糕",
-    "tags": ["戚風"],
+    "tags": ["戚風", "缺步驟"],
     "collected": "2026-11-14",
     "photo": "",
     "ingredients": [
@@ -5171,7 +5148,7 @@ const RECIPES = [
     "id": "lemon-buttercream-cake-roll",
     "name": "檸檬奶油霜蛋糕捲",
     "category": "蛋糕",
-    "tags": ["蛋糕捲"],
+    "tags": ["蛋糕捲", "缺步驟"],
     "collected": "2026-11-14",
     "photo": "",
     "ingredients": [
@@ -5509,7 +5486,7 @@ const RECIPES = [
     "id": "cultured-butter-cake-roll",
     "name": "發酵奶油蛋糕捲",
     "category": "蛋糕",
-    "tags": ["蛋糕捲"],
+    "tags": ["蛋糕捲", "缺步驟"],
     "collected": "2026-11-14",
     "photo": "",
     "ingredients": [
@@ -5606,7 +5583,7 @@ const RECIPES = [
     "id": "hazelnut-chantilly-cake-roll",
     "name": "榛果香緹捲",
     "category": "蛋糕",
-    "tags": ["蛋糕捲"],
+    "tags": ["蛋糕捲", "缺步驟"],
     "collected": "2026-11-14",
     "photo": "",
     "ingredients": [
@@ -6188,7 +6165,7 @@ const RECIPES = [
     "id": "taro-chiffon-sheet-cake-book",
     "name": "芋頭戚風蛋糕（從零開始學戚風）",
     "category": "蛋糕",
-    "tags": ["戚風"],
+    "tags": ["戚風", "缺步驟"],
     "collected": "2026-11-14",
     "photo": "",
     "ingredients": [
